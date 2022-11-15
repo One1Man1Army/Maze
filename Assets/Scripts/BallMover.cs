@@ -18,7 +18,7 @@ namespace Maze.Ball
 		private Ease _ease;
 		private float _time;
 		private bool _isRotating;
-		private float _rotationAnglePerFrame = 0.01f;
+		private float _rotationAnglePerFrame = 0.5f;
 		private bool _isMoving;
 
 		public void InjectInputService(IInputService inputService)
@@ -35,7 +35,7 @@ namespace Maze.Ball
 		{
 			if (_isRotating)
 			{
-				transform.RotateAround(transform.forward, _rotationAnglePerFrame);
+				transform.Rotate(new Vector3( 0,0,transform.eulerAngles.z +_rotationAnglePerFrame));
 			}
 		}
 

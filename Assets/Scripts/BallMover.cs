@@ -21,14 +21,6 @@ namespace Maze.Ball
 		private float _rotationAnglePerFrame = 0.01f;
 		private bool _isMoving;
 
-		private void Update()
-		{
-			if (_isRotating)
-			{
-				transform.Rotate(transform.forward, _rotationAnglePerFrame);
-			}
-		}
-
 		public void InjectInputService(IInputService inputService)
 		{
 			_inputService = inputService;
@@ -37,6 +29,14 @@ namespace Maze.Ball
 			_inputService.OnSwipeRight += OnSwipeRight;
 			_inputService.OnSwipeDown += OnSwipeDown;
 			_inputService.OnSwipeLeft += OnSwipeLeft;
+		}
+		
+		private void Update()
+		{
+			if (_isRotating)
+			{
+				transform.RotateAround(transform.forward, _rotationAnglePerFrame);
+			}
 		}
 
 		#region Swipes Processing
